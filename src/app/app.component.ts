@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  imports: [RouterOutlet],
+  template: `<div class="container mx-auto">
+    <router-outlet></router-outlet>
+  </div>`,
 })
-export class AppComponent {
-  title = 'fedex-assessment';
-}
+export class AppComponent {}
