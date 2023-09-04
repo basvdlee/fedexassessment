@@ -1,0 +1,58 @@
+@use "palette";
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+@use "@material/textfield" as mat-textfield;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$fedex-assessment-primary: mat.define-palette(palette.$fedex-purple-palette);
+$fedex-assessment-accent: mat.define-palette(palette.$fedex-orange-palette);
+$fedex-assessment-warn: mat.define-palette(palette.$fedex-red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$fedex-assessment-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $fedex-assessment-primary,
+      accent: $fedex-assessment-accent,
+      warn: $fedex-assessment-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($fedex-assessment-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-form-field {
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    @include mat-textfield.fill-color(white);
+  }
+
+  .mdc-text-field--filled {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
