@@ -1,0 +1,54 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit.next($event)" class="grid">
+  <mat-form-field>
+    <mat-label>Firstname</mat-label>
+    <input formControlName="firstname" matInput type="text" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Lastname</mat-label>
+    <input formControlName="lastname" matInput type="text" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input formControlName="email" matInput type="email" />
+    <mat-error
+      *ngIf="
+        form.controls.email.hasError('email') &&
+        !form.controls.email.hasError('required')
+      "
+    >
+      Please enter a valid email address
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input formControlName="password" matInput type="password" />
+    <ng-container *ngIf="!form.controls.password.hasError('pattern')">
+      <mat-error
+        *ngIf="
+          form.controls.password.hasError('firstnameUsed') &&
+          !form.controls.password.hasError('lastnameUsed')
+        "
+      >
+        Please do not use your firstname in your password.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          form.controls.password.hasError('lastnameUsed') &&
+          !form.controls.password.hasError('firstnameUsed')
+        "
+      >
+        Please do not use your lastname in your password.
+      </mat-error>
+    </ng-container>
+    <mat-error *ngIf="form.controls.password.hasError('pattern')">
+      Your password should contain 1 lowercase, 1 uppercase and between 8 - 64
+      characters
+    </mat-error>
+  </mat-form-field>
+  <button mat-button class="place-self-end" color="primary" type="submit">
+    Save
+    <mat-icon *ngIf="status === 'loading'"
+      ><mat-spinner color="primary" diameter="18"></mat-spinner
+    ></mat-icon>
+  </button>
+</form>
