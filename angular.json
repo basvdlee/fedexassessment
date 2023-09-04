@@ -27,18 +27,11 @@
             "outputPath": "dist/fedex-assessment",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/style/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -100,7 +93,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/style/styles.scss"
             ],
             "scripts": []
           }
